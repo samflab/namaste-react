@@ -1,0 +1,29 @@
+● What is Emmet?
+    Emmet is a plugin or an add-on for text editor.Its shortcut for writing code structures. Emmet is a web-developer's toolkit for boosting HTML and CSS code writing.
+    It saves time and keystroke. The shortcuts are then expanded to longer codes. Its kindof like autocomplete plus shortcuts. It leads to lesser typos and mistakes and also lesser effort in remembering the boilerplate.
+
+● Difference between a Library and Framework?
+    The flow of the code is completely controlled by the Framework and you have less flexibility over the flow of the code, whereas in a library one can control the flow of the program. 
+    The library can be invoked whenever and wherever you like. A library is a collection of functions, classes, or resources that you can call upon and use within your code. You are in control of when and how to use the library; it doesn't dictate the flow of your application. 
+    A framework is more comprehensive and provides the structure or skeleton for building an application. It often includes libraries, but it also dictates the overall architecture and workflow.
+    The Framework instructs us where to put the code and the code will be used as required. We can invoke librabries to perform a specific task by using components, classes and methods. A framework already provides code to perform common tasks and uses code provided by a developer for any custom modification.
+    Inversion of control is the main difference here as in a library, you have the full control over it as we call upon the library. And in a framework, it itself calls the code as the framework is in charge.
+
+
+● What is CDN? Why do we use it?
+    CDN stands for content delivery network. As the name suggests, its a network of servers linked together with the purpose of deliverying the content to the end users. It allows for a quick transfer of assets needed for loading up of javascript files, html pages, stylesheets (like google fonts).
+    In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
+
+    Faster load times: Content is delivered from a nearby server, reducing delays.
+    Reduced server load: Caches content, decreasing strain on the origin server.
+    Improved availability: Distributes traffic and prevents single points of failure.
+    Enhanced security: Offers protection against DDoS attacks and improves site security.
+
+● Why is React known as React?
+    React is called React because it emphasizes how applications can "react" to changes in data. The framework is designed to efficiently update and render the right components when data changes, providing a responsive and dynamic user interface.
+    The name highlights the idea that the UI reacts to state changes, meaning whenever the underlying data changes, the interface updates automatically and selectively, without needing a full refresh of the page. This "reactive" nature of the library makes it efficient for building dynamic web applications.
+    React’s component-based architecture and its use of a virtual DOM enable this smooth, real-time responsiveness.
+    
+● What is crossorigin in script tag?
+● What is diference between React and ReactDOM
+● What is difference between react.development.js and react.production.js files via CDN?
