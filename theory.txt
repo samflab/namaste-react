@@ -1,3 +1,4 @@
+--------------------------------------- EPISODE 1 -------------------------------------------------
 ● What is Emmet?
     Emmet is a plugin or an add-on for text editor.Its shortcut for writing code structures. Emmet is a web-developer's toolkit for boosting HTML and CSS code writing.
     It saves time and keystroke. The shortcuts are then expanded to longer codes. Its kindof like autocomplete plus shortcuts. It leads to lesser typos and mistakes and also lesser effort in remembering the boilerplate.
@@ -25,5 +26,85 @@
     React’s component-based architecture and its use of a virtual DOM enable this smooth, real-time responsiveness.
     
 ● What is crossorigin in script tag?
+   `crossorigin` in a `<script/>` tag is used to manage how browsers handle cross-origin requests for scripts. It controls the type of crossorigin requests that is made and how requests should be treated like cookies, http authentication, client-side certificates, etc. 
+   Provides support for CORS, enabling configuration for CORS requests for the element's fetched data.
+   Values of cross-origin:
+   - anonymous: The request is made without credentials. default value. includes information like cookies, http authentication, etc.
+   - use-credentials: The request is made with credentials when fetching the data from a different origin. the server must explicitly allow such requests by including the Access-Control-Allow-Credentials: true header.
+
+
 ● What is diference between React and ReactDOM
+    React is a JavaScript library for building user interfaces. React is the core library responsible for building user interfaces (UI). It allows you to create components, manage state, handle props, and define the structure and logic of your UI.
+    ReactDOM is the library that handles the actual rendering of React components in the browser's DOM (Document Object Model). It is essentially a glue between React and the browser. ReactDOM provides methods to render components to the DOM and to update them when the state or props change.
+
 ● What is difference between react.development.js and react.production.js files via CDN?
+    react.development.js version is optimized for development environments. It includes helpful warnings, detailed error messages, and other debugging aids to make it easier to identify issues during the development process.
+        - full error messages
+        - warnings
+        - dev tools support
+    react.production.js version is optimized for production environments. It's smaller, faster, and stripped of development-related warnings and error messages, providing better performance.
+        - smaller bundle size, minified and optimised
+        - no warnings or extra checks
+        - better performance
+--------------------------------------- EPISODE 2 ------------------------------------------------
+● What is `NPM`?
+    NPM is a package manager which contains all the dependencies that is installed in our system. Its like a database of all the packages installed. It fetched all the code of the dependencies. It also installs the dependency's dependencies and so on. Also called as transistive dependency.
+
+● What is `Parcel/Webpack`? Why do we need it?
+    Parcel and Webpack are popular bundlers used in modern JavaScript development. They take your code (along with assets like styles, images, etc.), compress it, minify it, and package it into optimized files that can be efficiently loaded in the browser. optimizing assets, and ensuring efficient delivery of your application in production.
+    Bundlers like Parcel and Webpack automate the process of turning these numerous assets into a single or several optimized bundles, improving load times and simplifying development.
+
+    - In large applications, writing code in separate files (modules) improves maintainability and readability. Instead of having all the JavaScript in one massive file, each piece of functionality can live in its own module.
+    - Bundlers combine these modules into a single file or a set of files that can be delivered efficiently to the browser.
+
+    - Bundlers can optimize assets such as JavaScript, CSS, images, and fonts. They minify code, compress images, remove unused code (tree-shaking), and inline assets to reduce the number of HTTP requests, improving the performance of the web application.
+
+    - Bundlers often come with development tools like hot module reloading (HMR), which allows developers to see changes live in the browser without having to reload the whole page, speeding up the development process.
+
+
+● What is `.parcel-cache`
+    The .parcel-cache folder is used by the Parcel bundler to store a cache of the intermediate build artifacts, enabling faster rebuilds during development. When you run Parcel, it compiles and processes files, transforming them into a final bundle. To avoid redoing the entire build process every time a change is made, Parcel caches these build steps, which helps speed up subsequent builds.
+
+    - faster rebuils
+    - content hashing
+    - its safe to delete
+● What is `npx` ?
+    npx is a tool that comes with npm. It is primarily used to execute dependencies directly from the npm registry without needing to install them globally or locally. 
+
+● What is difference between `dependencies` vs `devDependencies`
+    packages under devDependencies are installed when we require dependencies specifically during our development phase. devDependencies are the packages that are only needed during development but are not required in production. These tools assist with tasks like testing, compiling, or linting but do not affect the actual runtime of your application.
+            npm install eslint --save-dev
+
+    
+    packages under dependencies are installed when we require them in our development and production phase. dependencies are the packages that are required for the application to run in production. These are libraries or modules that your project needs when it is actually running in a live environment. Any code that is part of your application's core functionality should be included here.
+
+            npm install express
+
+
+● What is Tree Shaking?
+    Tree shaking is a term used in JavaScript bundling (especially with tools like Webpack and Parcel) to refer to the process of removing unused code from the final bundle. It helps optimize the application by eliminating dead or unused portions of code, reducing the size of the output file, and making the app more efficient.
+
+● - What is Hot Module Replacement?
+    Hot Module Replacement (HMR) is a feature in JavaScript bundlers like Webpack that allows modules to be updated in the browser without a full page reload. This feature is especially useful during development because it allows developers to make changes to their code and see the results instantly, without losing the application’s state or reloading the entire page.
+
+    Apply Updates: Instead of reloading the entire page, HMR injects the new version of the changed module into the application and updates the specific parts of the code that have changed.
+    No Page Reload: The browser doesn’t refresh, so the application’s state is preserved, and only the affected modules are replaced. This makes the development process faster, as you don’t lose any unsaved data, input, or component state.
+
+● List down your favourite 5 superpowers of Parcel and describe any 3 of them in your
+own words.
+    My 5 favourite superpowers of Parcel:
+    1.  **Zero Configuration**: Parcel is a zero-configuration bundler, which means we don't have to setup it, once installed its ready for use. It automatically detects the type of the files that we are working with. We don't have to put in our time or efforts in configuring it into our project, we can straight up bundle our project right away. It provides an ideal setup for beginners or projects where you want quick, seamless builds.
+    2.  **Tree Shaking**: The ability to remove ununsed code is one of the best thing about Parcel. As we keep on writing loads of code, we tend to import a lot of packages or files and then we also remove the unwanted function or a file support but that doesn't remove the import for that particular css or file. it still says there. Once Parcel starts bundling up our project it removes the unused, dead code which is benefial for our codebase as it makes it smaller and more efficient.
+    3. **Faster Builds**: Parcel allows for faster local builds during the development phase as it uses the concept of caching. Parcel doesn't have to rebuild the same, entire codebase again and again for just 2 lines of code change. Instead it maintains a cache and the rebuild takes lesser amount of time. It uses file watching algorithm which is written in C++ that makes it happen. 
+    4.  **Automatic Code Splitting**: Parcel automatically splits your code into smaller bundles (chunks) when necessary, using dynamic imports or other techniques. Code splitting improves performance by only loading the code needed for a particular page or feature. You don't need to configure this manually—Parcel figures it out for you, making it easy to optimize for production without extra setup.
+    5.  **Automatic CSS and Image Optimization**: Parcel automatically optimizes CSS and images for a smaller build size. The most important and the most biggest of all assest size is that of the images and it requires a great deal to have the images optimised without  comprimising with the quality of the images. 
+
+● - What is `.gitignore`? What should we add and not add into it?
+● - What is the difference between `package.json` and `package-lock.json`
+● - Why should I not modify `package-lock.json`?
+● - What is `node_modules` ? Is it a good idea to push that on git?
+● - What is the `dist` folder?
+● - What is `browserlists`
+Read about dif bundlers: vite, webpack, parcel
+● Read about: ^ - caret and ~ - tilda
+● Read about Script types in html (MDN Docs)
