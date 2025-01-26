@@ -4,11 +4,12 @@
   "description": "Practising React everyday",
   "main": "App.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html"
   },
   "alias": {
     "process": false
- },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samflab/namaste-react.git"
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/samflab/namaste-react#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
     "parcel": "^2.12.0"
   },
   "dependencies": {

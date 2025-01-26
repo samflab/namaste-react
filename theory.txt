@@ -84,7 +84,7 @@
 ● What is Tree Shaking?
     Tree shaking is a term used in JavaScript bundling (especially with tools like Webpack and Parcel) to refer to the process of removing unused code from the final bundle. It helps optimize the application by eliminating dead or unused portions of code, reducing the size of the output file, and making the app more efficient.
 
-● - What is Hot Module Replacement?
+● What is Hot Module Replacement?
     Hot Module Replacement (HMR) is a feature in JavaScript bundlers like Webpack that allows modules to be updated in the browser without a full page reload. This feature is especially useful during development because it allows developers to make changes to their code and see the results instantly, without losing the application’s state or reloading the entire page.
 
     Apply Updates: Instead of reloading the entire page, HMR injects the new version of the changed module into the application and updates the specific parts of the code that have changed.
@@ -99,7 +99,8 @@ own words.
     4.  **Automatic Code Splitting**: Parcel automatically splits your code into smaller bundles (chunks) when necessary, using dynamic imports or other techniques. Code splitting improves performance by only loading the code needed for a particular page or feature. You don't need to configure this manually—Parcel figures it out for you, making it easy to optimize for production without extra setup.
     5.  **Automatic CSS and Image Optimization**: Parcel automatically optimizes CSS and images for a smaller build size. The most important and the most biggest of all assest size is that of the images and it requires a great deal to have the images optimised without  comprimising with the quality of the images. 
 
-● - What is `.gitignore`? What should we add and not add into it?
+● What is `.gitignore`? What should we add and not add into it?
+    
 ● - What is the difference between `package.json` and `package-lock.json`
 ● - Why should I not modify `package-lock.json`?
 ● - What is `node_modules` ? Is it a good idea to push that on git?
