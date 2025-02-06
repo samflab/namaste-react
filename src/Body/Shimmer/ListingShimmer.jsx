@@ -1,5 +1,5 @@
-import "./styles/shimmer.scss";
-const Shimmer = () => {
+import "../styles/shimmer.scss";
+const ListingShimmer = () => {
   return (
     <div className="shimmer-container">
       <div className="filter-container">
@@ -22,4 +22,4 @@ const Shimmer = () => {
   );
 };
 
-export default Shimmer;
+export default ListingShimmer;

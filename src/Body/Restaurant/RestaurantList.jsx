@@ -1,33 +1,29 @@
 import RestaurantCard from "./RestaurantCard";
 import "../styles/restaurant.scss";
 import { useEffect, useState } from "react";
-import Shimmer from "../Shimmer";
+import ListingShimmer from "../Shimmer/ListingShimmer";
 import { swiggyApiBody } from "../../constants/apiBody";
+import { apiProxy, restaurantCardApi } from "../../constants/api";
 
 const RestaurantList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
-  
-  const fetchRestaurantCards = async () => {
-    const url =
-      "https://www.swiggy.com/api/seo/getListing?lat=28.63270&lng=77.21980&apiV2=true";
 
+  const fetchRestaurantCards = async () => {
+    const url = `${apiProxy}/${restaurantCardApi}`;
     try {
-      const response = await fetch(
-        `https://thingproxy.freeboard.io/fetch/${url}`,
-        swiggyApiBody
-      ).then((response) => {
+      const response = await fetch(url, swiggyApiBody).then((response) => {
         return response.json();
       });
 
       setRestaurantList(
-        response.data.success.cards[1].card.card.gridElements.infoWithStyle
-          .restaurants
+        response?.data?.success?.cards[0]?.card?.card?.gridElements
+          ?.infoWithStyle?.restaurants
       );
       setFilteredRestaurant(
-        response.data.success.cards[1].card.card.gridElements.infoWithStyle
-          .restaurants
+        response?.data?.success?.cards[0]?.card?.card?.gridElements
+          ?.infoWithStyle?.restaurants
       );
     } catch (error) {
       console.error("Error fetching restaurant cards:", error);
@@ -39,7 +35,7 @@ const RestaurantList = () => {
   }, []);
 
   return filteredRestaurant.length === 0 ? (
-    <Shimmer />
+    <ListingShimmer />
   ) : (
     <div className="restaurant-container">
       <input
@@ -80,13 +76,14 @@ const RestaurantList = () => {
         {filteredRestaurant.map((restaurant) => (
           <RestaurantCard
             imgLink={
-              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto" +
-              restaurant.info.mediaFiles[0].url
+              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              restaurant.info.cloudinaryImageId
             }
             name={restaurant.info.name}
+            id={restaurant.info.id}
             cuisine={restaurant.info.cuisines}
-            rating={restaurant.info.rating.value}
-            time={restaurant.info.locationInfo.distanceString}
+            rating={restaurant.info.avgRating}
+            time={restaurant.info.sla.slaString}
             cost={restaurant.info.costForTwo}
           />
         ))}

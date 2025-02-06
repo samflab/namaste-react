@@ -8,6 +8,7 @@
         border-radius: 4px;
         background-color:  $primary-color-orange;
         color: $button-font-white;
+        cursor: pointer;
     }
 
     .search-box{
@@ -26,6 +27,7 @@
         background-color:  $primary-color-orange;
         color: $button-font-white;
         margin: 0 1rem ;
+        cursor: pointer;
     }
 
 }
@@ -38,15 +40,19 @@
 .restaurant-card{
     border: 1px solid $silver-sand;
     padding: 0.3rem;
-    border-radius: 8px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 340px;
     .img-container{
         width: 17.9rem;
         height: 12rem;
         img{
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
+            object-fit: cover;
+            border-radius: 4px;
         }
     }
     .restaurant-details{
@@ -57,8 +63,10 @@
         .restaurant-name{
             font-size: 16px;
             font-weight: 600;
+            color: $head-bg-black;
         }
         .cuisine{
+            width: 280px;
             font-size: 14px;
             color: $text-very-dark-gray;
             font-weight: 400;
@@ -78,4 +86,103 @@
             color: $text-very-dark-gray;
         }
     }  
+}
+
+.restaurant-menu-wrapper{
+    padding: 2rem 8rem;
+    .restaurant-details-wrapper{
+        display: flex;
+        align-items:flex-start;
+        justify-content: space-between;
+        .restaurant-name{
+            font-size: 2.5rem;
+        }
+        .rating-number{
+            font-weight: 400;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .rating-star{
+            font-size: 0.9rem;
+            color: $primary-color-orange;
+            
+        }
+    }
+    .restaurant-cuisine, .restaurant-address, .total-review, .estimated-time{
+        color: $text-very-dark-gray;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        margin: 1rem 0;
+    }
+
+    .total-review{
+        margin-top: 0.5rem;
+    }
+
+    .order-online{
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .estimated-time{
+        font-size: 0.9rem;
+        text-transform: lowercase;
+    }
+
+    .food-item-container{
+        display: flex;
+        gap: 2rem;
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+        .food-item-info{
+            flex-basis: 60rem;
+        }
+        .food-img-container{
+            
+            img{
+                object-fit: cover;
+                width: 150px;
+                height: 100px;
+                border-radius: 5px;
+            }
+        }
+
+        .food-label{
+            color: $text-very-dark-gray;
+            font-size: 0.8rem;
+        }
+
+        .food-name{
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .food-price{
+            color: $primary-color-orange;
+        }
+        
+        .food-description{
+            font-size: 1rem;
+            font-weight: 500;
+            color: $text-very-dark-gray;
+            display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+        }
+    }
+
+    .add-to-cart-btn > button{
+        background-color: transparent;
+        border: 1px solid $primary-color-orange;
+        outline: none;
+        color: $primary-color-orange;
+        border-radius: 5px;
+        padding: 1rem 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        flex-basis: 0;
+
+    }
 }

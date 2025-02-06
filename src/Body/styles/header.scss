@@ -5,6 +5,7 @@
     height: 70vh;
 }
 .navbar-container{
+    background-color: $head-bg-black;
     padding: 1rem 8rem;  
     color: $button-font-white;
     display: flex;
@@ -22,6 +23,11 @@
         gap: 2rem;
         margin-right: 1rem;
         cursor: pointer;
+        li > a{
+            text-decoration: none;
+            cursor: pointer;
+            color: white;
+        }
     }
     button{
         background-color: $primary-color-orange;

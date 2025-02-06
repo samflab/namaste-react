@@ -4,7 +4,6 @@ import RestaurantList from "./Restaurant/RestaurantList";
 const Body = () => {
   return (
     <>
-      <Header />
       <RestaurantList />
     </>
   );

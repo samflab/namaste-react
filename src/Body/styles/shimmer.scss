@@ -22,4 +22,65 @@
             height: 20rem;
         }
     }
+
+    .shimmer-info-container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .shimmer-title{
+            height: 3rem;
+            width: 30rem;
+            background-color: $shimmer-gray;
+        }
+        .shimmer-rating{
+            height: 3rem;
+            width: 10rem;
+            background-color: $shimmer-gray;
+
+        }
+
+        
+    }
+    .shimmer-category, .shimmer-address, .shimmer-sub-heading{
+        height: 1rem;
+        width: 10rem;
+        background-color: $shimmer-gray;
+        margin-top: 1rem;
+    }
+
+    .shimmer-address {
+        width: 50rem;
+    }
+
+    .shimmer-sub-heading{
+        height: 2rem;
+        margin-top: 2rem;
+    }
+
+    .menu-cards{
+        display: flex;
+        width: 100%;
+        margin-top: 2rem;
+        gap: 1rem;
+        
+        .shimmer-img{
+            
+            background-color: $shimmer-gray;
+            height: 10rem;
+            width: 10rem;
+        }
+        .shimmer-name{
+            width: 10rem;
+            height: 1rem;
+            margin-bottom: 1rem;
+            background-color: $shimmer-gray;
+        }
+        .shimmer-name:nth-child(3){
+            width: 3rem;
+        }
+        .shimmer-name:nth-child(5){
+            width: 40rem;
+        }
+    }
 }
+

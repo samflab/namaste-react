@@ -1,0 +1,48 @@
+@import "./common/colors.scss";
+
+.img-container{
+    width: 100vw;
+    height: 80vh;
+    position: relative;
+    > h1{
+        position: absolute;
+        top: 180px;
+    left: 250px;
+    font-size: 5rem;
+    }
+    .about-us-hero-img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.72;
+    }
+}
+
+.history{
+    padding: 2rem 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .sub-title{
+        font-size: 1rem;
+        color: $primary-color-orange;
+    }
+    .delivery{
+        width: 25%;
+    height: 40%;
+        background-color: aliceblue;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .subtext{
+        font-size: 1rem;
+        color: $head-bg-black;
+        margin-bottom: 1rem;
+        width: 30rem;
+    }
+}
