@@ -1,55 +1,17 @@
 import { useParams } from "react-router-dom";
-import { swiggyApiBody2 } from "../../constants/apiBody";
-import { useEffect, useState } from "react";
-import { apiProxy, restaurantMenuApi } from "../../constants/api";
+import { imageApi } from "../../constants/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faStar,
-  faStarHalfStroke,
-  faStopwatch,
-  faCirclePlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarOutline } from "@fortawesome/free-regular-svg-icons";
+import { faStopwatch, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import DetailsShimmer from "../Shimmer/DetailsShimmer";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import useStarRating from "../../utils/useStarRating";
 
 const RestaurantMenu = () => {
   const restaurantId = useParams().resId;
-  const [menu, setMenu] = useState([]);
 
-  const fetchSingleRestaurantMenu = async () => {
-    const url = `${apiProxy}/${restaurantMenuApi}=${restaurantId}`;
-    try {
-      const response = await fetch(url, swiggyApiBody2).then((response) => {
-        return response.json();
-      });
+  const menu = useRestaurantMenu(restaurantId);
 
-      setMenu(response.data.cards);
-    } catch (error) {
-      console.error("Error fetching restaurant menu: ", error);
-    }
-  };
-  useEffect(() => {
-    fetchSingleRestaurantMenu();
-  }, []);
-
-  const starRating = (rating) => {
-    const totalStars = 5;
-    const stars = [];
-
-    for (let i = 1; i <= totalStars; i++) {
-      if (i <= rating) {
-        stars.push(<FontAwesomeIcon icon={faStar} />);
-      } else if (i - 0.5 <= rating) {
-        stars.push(<FontAwesomeIcon icon={faStarHalfStroke} />);
-      } else {
-        stars.push(<FontAwesomeIcon icon={faStarOutline} />);
-      }
-    }
-
-    return <span className="rating-star">{stars}</span>;
-  };
-
-  return menu.length === 0 ? (
+  return menu?.length === 0 ? (
     <DetailsShimmer />
   ) : (
     <div className="restaurant-menu-wrapper">
@@ -57,7 +19,7 @@ const RestaurantMenu = () => {
         <div className="restaurant-name">{menu[2]?.card?.card?.info?.name}</div>
         <div>
           <div>
-            {starRating(menu[2]?.card?.card?.info?.avgRating)}
+            {useStarRating(menu[2]?.card?.card?.info?.avgRating)}
             <span className="rating-number">
               {menu[2]?.card?.card?.info?.avgRating}
             </span>
@@ -76,16 +38,17 @@ const RestaurantMenu = () => {
       <div>
         <div className="order-online">Order Online</div>
         <div className="estimated-time">
-          <FontAwesomeIcon icon={faStopwatch} />{" "}
-          {menu[2]?.card?.card?.info?.sla.slaString}
+          {menu[2]?.card?.card?.info?.sla.slaString ? (
+            <>
+              <FontAwesomeIcon icon={faStopwatch} />
+              {menu[2]?.card?.card?.info?.sla.slaString}
+            </>
+          ) : null}
         </div>
         {menu?.map((menuCard, index) => {
-          console.log("menuuiuuuu", menu[2]?.card?.card?.info);
-
           const menuItemArray = [];
           menuCard?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((card) =>
             card?.card?.card?.itemCards?.map((itemCard) => {
-              console.log("itemCard", itemCard);
               menuItemArray.push({
                 itemName: itemCard?.card?.info?.name,
                 category: itemCard?.card?.info?.category,
@@ -105,9 +68,7 @@ const RestaurantMenu = () => {
                     key={singleMenuItem?.card?.info?.id}
                   >
                     <div className="food-img-container">
-                      <img
-                        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${singleMenuItem.imageId}`}
-                      ></img>
+                      <img src={`${imageApi}${singleMenuItem.imageId}`}></img>
                     </div>
                     <div className="food-item-info">
                       <div className="food-label">
