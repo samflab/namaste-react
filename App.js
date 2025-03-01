@@ -9,6 +9,7 @@ import ErrorPage from "./src/Body/ErrorPage";
 import Header from "./src/Body/Header";
 import RestaurantMenu from "./src/Body/Restaurant/RestaurantMenu";
 import Footer from "./src/Body/Footer";
+import "./src/index.css";
 
 const App = () => {
   return (

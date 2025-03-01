@@ -1,5 +1,4 @@
 import RestaurantCard from "./RestaurantCard";
-import "../styles/restaurant.scss";
 import { useEffect, useState } from "react";
 import ListingShimmer from "../Shimmer/ListingShimmer";
 import { swiggyApiBody } from "../../constants/apiBody";
@@ -40,9 +39,9 @@ const RestaurantList = () => {
     filteredRestaurant.length === 0 ? (
       <ListingShimmer />
     ) : (
-      <div className="restaurant-container">
+      <div className="px-32 py-4">
         <input
-          className="search-box"
+          className="h-10 w-60 rounded-md border border-solid border-zinc-400 outline-none py-3 px-2"
           placeholder="Find restaurants"
           onChange={(event) => {
             setSearchText(event.target.value);
@@ -50,7 +49,7 @@ const RestaurantList = () => {
           value={searchText}
         />
         <button
-          className="search-btn"
+          className="border-none px-8 py-2  bg-orange-500 mx-4 rounded-md text-stone-50 "
           onClick={() =>
             setFilteredRestaurant(
               restaurantList.filter((restaurant) =>
@@ -64,7 +63,7 @@ const RestaurantList = () => {
           Search
         </button>
         <button
-          className="top-rating-btn"
+          className="mb-4 border-none px-8 py-2 rounded-md bg-orange-500 text-stone-50"
           onClick={() =>
             setFilteredRestaurant(
               restaurantList.filter(
@@ -75,7 +74,7 @@ const RestaurantList = () => {
         >
           Top Rated Restaurants
         </button>
-        <div className="card-container">
+        <div className="flex flex-wrap gap-4">
           {filteredRestaurant.map((restaurant) => (
             <RestaurantCard
               imgLink={`${imageApi}
@@ -92,9 +91,7 @@ const RestaurantList = () => {
       </div>
     )
   ) : (
-    <h2 className="restaurant-container">
-      You are offline, check internet connection
-    </h2>
+    <h2 className="px-32 py-8">You are offline, check internet connection</h2>
   );
 };
 
