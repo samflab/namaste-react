@@ -1,14 +1,16 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import ListingShimmer from "../Shimmer/ListingShimmer";
 import { swiggyApiBody } from "../../constants/apiBody";
-import { apiProxy, imageApi, restaurantCardApi } from "../../constants/api";
+import { apiProxy, restaurantCardApi } from "../../constants/api";
 import useOnlineStatusCheck from "../../utils/useOnlineStatusCheck";
+import { Link } from "react-router-dom";
 
 const RestaurantList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const WithVegLabel = withVegLabel(RestaurantCard);
   const checkOnline = useOnlineStatusCheck();
 
   const fetchRestaurantCards = async () => {
@@ -17,7 +19,6 @@ const RestaurantList = () => {
       const response = await fetch(url, swiggyApiBody).then((response) => {
         return response.json();
       });
-
       setRestaurantList(
         response?.data?.success?.cards[0]?.card?.card?.gridElements
           ?.infoWithStyle?.restaurants
@@ -75,17 +76,18 @@ const RestaurantList = () => {
           Top Rated Restaurants
         </button>
         <div className="flex flex-wrap gap-4">
-          {filteredRestaurant.map((restaurant) => (
-            <RestaurantCard
-              imgLink={`${imageApi}
-              ${restaurant.info.cloudinaryImageId}`}
-              name={restaurant.info.name}
-              id={restaurant.info.id}
-              cuisine={restaurant.info.cuisines}
-              rating={restaurant.info.avgRating}
-              time={restaurant.info.sla.slaString}
-              cost={restaurant.info.costForTwo}
-            />
+          {filteredRestaurant.map((restaurant, index) => (
+            <Link
+              to={`/restaurant-menu/${restaurant?.info?.id}`}
+              className="no-underline h-[28rem] border border-zinc-400 rounded-md"
+              key={index}
+            >
+              {restaurant?.info?.veg ? (
+                <WithVegLabel restaurant={restaurant.info} />
+              ) : (
+                <RestaurantCard restaurant={restaurant.info} />
+              )}
+            </Link>
           ))}
         </div>
       </div>
