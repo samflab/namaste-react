@@ -5,7 +5,7 @@ const RestaurantCard = (props) => {
     props?.restaurant;
   return (
     <div className="h-80 flex-wrap p-2">
-      <div className="size-72">
+      <div className="size-[17rem]">
         <img
           src={`${imageApi}${cloudinaryImageId}`}
           className="w-full h-full object-cover rounded-md"
