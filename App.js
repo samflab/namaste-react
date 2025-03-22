@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "./App.scss";
 import Body from "./src/Body/Body";
@@ -10,13 +10,27 @@ import Header from "./src/Body/Header";
 import RestaurantMenu from "./src/Body/Restaurant/RestaurantMenu";
 import Footer from "./src/Body/Footer";
 import "./src/index.css";
+import UserContext from "./src/utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore";
+import Cart from "./src/Body/Cart";
 
 const App = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    setUserName("Masudha");
+  }, []);
+
   return (
-    <div>
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -42,9 +56,9 @@ const routeConfig = createBrowserRouter([
         element: <RestaurantMenu />,
       },
       {
-        path: "/count",
-        element: <Footer/> // displaying my knowledge of class based components
-      }
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
     errorElement: <ErrorPage />,
   },
