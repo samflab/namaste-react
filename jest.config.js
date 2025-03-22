@@ -17,6 +17,10 @@ const config = {
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|svg|css|scss)$': '<rootDir>/__mocks__/fileMock.js',
+  },
+
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
 
