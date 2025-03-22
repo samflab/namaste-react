@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarOutline } from "@fortawesome/free-regular-svg-icons";
-const useStarRating = (rating) => {
+const useStarRating = (rating, id) => {
   const totalStars = 5;
   const stars = [];
 
@@ -15,7 +15,11 @@ const useStarRating = (rating) => {
     }
   }
 
-  return <span className="rating-star">{stars}</span>;
+  return (
+    <span className="rating-star" key={id}>
+      {stars}
+    </span>
+  );
 };
 
 export default useStarRating;

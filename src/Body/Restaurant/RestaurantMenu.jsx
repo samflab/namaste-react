@@ -39,7 +39,7 @@ const RestaurantMenu = () => {
 
         <div>
           <div>
-            {useStarRating(menu[2]?.card?.card?.info?.avgRating)}
+            {useStarRating(menu[2]?.card?.card?.info?.avgRating, menu[2]?.card?.card?.info?.id)}
             <span className="font-semibold ml-1 text-md">
               {menu[2]?.card?.card?.info?.avgRating}
             </span>
